@@ -3,13 +3,13 @@
  * to make it easier to upgrade to newer versions of the template.
 */
 
-using ProtagSumiConfig.Configuration;
-using ProtagSumiConfig.Template.Configuration;
+using ProtagSumiAddonConfig.Configuration;
+using ProtagSumiAddonConfig.Template.Configuration;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using Reloaded.Mod.Interfaces.Internal;
 
-namespace ProtagSumiConfig.Template
+namespace ProtagSumiAddonConfig.Template
 {
 	public class Startup : IMod
 	{

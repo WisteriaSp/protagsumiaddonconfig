@@ -1,8 +1,8 @@
-﻿using ProtagSumiConfig.Configuration;
+﻿using ProtagSumiAddonConfig.Configuration;
 using Reloaded.Mod.Interfaces;
 using IReloadedHooks = Reloaded.Hooks.ReloadedII.Interfaces.IReloadedHooks;
 
-namespace ProtagSumiConfig.Template
+namespace ProtagSumiAddonConfig.Template
 {
 	/// <summary>
 	/// Represents information passed in from the mod loader template to the implementing mod.

@@ -1,6 +1,6 @@
-﻿using ProtagSumiConfig.Configuration;
+﻿using ProtagSumiAddonConfig.Configuration;
 
-namespace ProtagSumiConfig.Template
+namespace ProtagSumiAddonConfig.Template
 {
 	/// <summary>
 	/// Base class for implementing mod functionality.

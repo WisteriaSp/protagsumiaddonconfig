@@ -1,0 +1,36 @@
+{
+  "ModId": "p5rpc.kasumiasprotag.addonsmod",
+  "ModName": "Kasumi as Protagonist - Addon Collection",
+  "ModAuthor": "Wisteria",
+  "ModVersion": "1.0.0",
+  "ModDescription": "A collection of add-ons for Kasumi as Protagonist, please make sure to disable any gameplay config options in the main mod if using options from this mod and vice versa. Thumbnail by @trillmunch",
+  "ModDll": "protagsumiaddonconfig.dll",
+  "ModIcon": "Preview.png",
+  "ModR2RManagedDll32": "x86/protagsumiaddonconfig.dll",
+  "ModR2RManagedDll64": "x64/protagsumiaddonconfig.dll",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "Tags": [],
+  "CanUnload": false,
+  "HasExports": false,
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "p5rpc.kasumiasprotag.addonsmod.ReleaseMetadata.json",
+  "PluginData": {},
+  "IsUniversalMod": false,
+  "ModDependencies": [
+    "crifs.v2.hook",
+    "P5R.CostumeFramework",
+    "p5rpc.kasumiasprotag",
+    "reloaded.sharedlib.hooks",
+    "reloaded.universal.fileemulationframework.bf",
+    "reloaded.universal.fileemulationframework.bmd",
+    "reloaded.universal.fileemulationframework.pak",
+    "reloaded.universal.fileemulationframework.spd"
+  ],
+  "OptionalDependencies": [],
+  "SupportedAppId": [
+    "p5r.exe"
+  ],
+  "ProjectUrl": "",
+  "CreatorUrl": ""
+}

@@ -1,7 +1,7 @@
-﻿using ProtagSumiConfig.Configuration;
+﻿using ProtagSumiAddonConfig.Configuration;
 using Reloaded.Mod.Interfaces;
 
-namespace ProtagSumiConfig.Template.Configuration
+namespace ProtagSumiAddonConfig.Template.Configuration
 {
 	/// <summary>
 	/// Creates the various different configurations used by the mod.
