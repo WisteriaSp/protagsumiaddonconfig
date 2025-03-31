@@ -8,6 +8,7 @@ using BF.File.Emulator.Interfaces;
 using BMD.File.Emulator.Interfaces;
 using PAK.Stream.Emulator.Interfaces;
 using SPD.File.Emulator.Interfaces;
+using P5R.CostumeFramework.Interfaces;
 
 namespace ProtagSumiAddonConfig
 {
@@ -103,41 +104,38 @@ namespace ProtagSumiAddonConfig
                 return;
             }
 
-            /*             
-           var CostumeFrameworkController = _modLoader.GetController<ICostumeApi>();
-           if (CostumeFrameworkController == null || !CostumeFrameworkController.TryGetTarget(out var CostumeFrameworkAPI))
+
+            var CostumeFrameworkController = _modLoader.GetController<ICostumeApi>();
+            if (CostumeFrameworkController == null || !CostumeFrameworkController.TryGetTarget(out var CostumeFrameworkAPI))
+            {
+                _logger.WriteLine($"Something in Costume Framework broke! Costumes will not load properly!", System.Drawing.Color.Red);
+                return;
+            }
+
+            /* 
+var BGMEController = _modLoader.GetController<IBgmeApi>();
+           if (BGMEController == null || !BGMEController.TryGetTarget(out var _BGME))
            {
-               _logger.WriteLine($"Something in Costume Framework broke! Costumes will not load properly!", System.Drawing.Color.Red);
+               _logger.WriteLine($"Something in BGME shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
                return;
            }
+               */
 
-                     var BGMEController = _modLoader.GetController<IBgmeApi>();
-                       if (BGMEController == null || !BGMEController.TryGetTarget(out var _BGME))
-                       {
-                           _logger.WriteLine($"Something in BGME shit its pants! Files requiring bin merging will not load properly!", System.Drawing.Color.Red);
-                           return;
-                       }
+            // Set configuration options - obviously you don't need all of these, pick and choose what you need!
 
 
-           // Set configuration options - obviously you don't need all of these, pick and choose what you need!
 
-           // CBT Alts
-           if (_configuration.CBTAlts)
-           {
-               _logger.WriteLine($"bald _modConfig.ModId", System.Drawing.Color.Red);
-               CostumeFrameworkAPI.AddCostumesFolder(_modConfig.ModId, "OptionalModFiles\\Costumes\\Testing\\Joker");
-           }
 
-           // Misc Alts
-           if (_configuration.MiscCostumesSumi)
-           {
-               CostumeFrameworkAPI.AddCostumesFolder(_modConfig.ModId, "OptionalModFiles\\Costumes\\CBTAlts\\Joker");
-               _logger.WriteLine($"hi lol _modConfig.ModId", System.Drawing.Color.Purple);
-           }
-           */
 
             // Grab Mod ID
             var mods = _modLoader.GetActiveMods();
+
+            // CBT Alts
+            if (_configuration.CBTAlts)
+            {
+                var CBTFolder = Path.Combine(modDir, "OptionalModFiles", "Costumes", "CBTAlts", "Costumes");
+                CostumeFrameworkAPI.AddCostumesFolder(modDir, CBTFolder);
+            }
 
             // Equipment Patch Config
             if (_configuration.EquipmentPatchAddon == Config.EquipmentPatch.GunOverhaul ||
@@ -170,10 +168,6 @@ namespace ProtagSumiAddonConfig
                         criFsApi.AddBind(file, relativePath, _modConfig.ModId);
                     }
                 }
-                else
-                {
-                    _logger.WriteLine($"Character asset folder not found: {assetFolder}", System.Drawing.Color.Yellow);
-                }
             }
 
             // AoA Color
@@ -189,9 +183,46 @@ namespace ProtagSumiAddonConfig
                         criFsApi.AddBind(file, relativePath, _modConfig.ModId);
                     }
                 }
-                else
+            }
+
+            // Weapon Models
+            if (_configuration.WeaponModelsConfigEnum == Config.WeaponsModels.Expanded ||
+                _configuration.WeaponModelsConfigEnum == Config.WeaponsModels.Expanded_No_Lances)
+            {
+                string? WeaponsFolder = _configuration.WeaponModelsConfigEnum switch
                 {
-                    _logger.WriteLine($"Character asset folder not found: {assetFolder}", System.Drawing.Color.Yellow);
+                    Config.WeaponsModels.Expanded => "ExpandedWeaponModels",
+                    Config.WeaponsModels.Expanded_No_Lances => "ExpandedWeaponModels-NoLances",
+                    _ => null
+                };
+
+                if (!string.IsNullOrEmpty(WeaponsFolder))
+                {
+                    var assetFolder = Path.Combine(modDir, "OptionalModFiles", "Weapon", WeaponsFolder, "Characters", "Joker", "1");
+
+                    if (Directory.Exists(assetFolder))
+                    {
+                        foreach (var file in Directory.EnumerateFiles(assetFolder, "*", SearchOption.AllDirectories))
+                        {
+                            var relativePath = Path.GetRelativePath(assetFolder, file);
+                            criFsApi.AddBind(file, relativePath, _modConfig.ModId);
+                        }
+                    }
+                }
+            }
+
+            // Sumire Overhaul
+            if (_configuration.SumireOverhaul)
+            {
+                var assetFolder = Path.Combine(modDir, "OptionalModFiles", "Overhaul", "SumireVersion", "Characters", "Joker", "1");
+
+                if (Directory.Exists(assetFolder))
+                {
+                    foreach (var file in Directory.EnumerateFiles(assetFolder, "*", SearchOption.AllDirectories))
+                    {
+                        var relativePath = Path.GetRelativePath(assetFolder, file);
+                        criFsApi.AddBind(file, relativePath, _modConfig.ModId);
+                    }
                 }
             }
 

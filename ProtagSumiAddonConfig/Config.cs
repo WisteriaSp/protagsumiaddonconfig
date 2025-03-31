@@ -44,50 +44,68 @@ namespace ProtagSumiAddonConfig.Configuration
             Gray,
         }
 
+        public enum WeaponsModels
+        {
+            Default,
+            Expanded,
+            Expanded_No_Lances,
+        }
+
+        [Category("Model")]
+        [DisplayName("Sumire Overhaul")]
+        [Description("Replaces all models with Sumire's glasses and hair down models (expect bugs!)")]
+        [DefaultValue(false)]
+        [Display(Order = 1)]
+        public bool SumireOverhaul { get; set; } = false;
+
+        [Category("Model")]
+        [DisplayName("Expanded Weapon Models")]
+        [Description("Choose between the default weapon models or an expanded selection of weapon models by JustAdam.")]
+        [DefaultValue(WeaponsModels.Default)]
+        [Display(Order = 2)]
+        public WeaponsModels WeaponModelsConfigEnum { get; set; }
+
+        [Category("Costumes")]
+        [DisplayName("Custom Bonus Tweaks Alts")]
+        [Description("Adds Sumi's hair down alt outfits from Custom Bonus Tweaks.")]
+        [DefaultValue(true)]
+        [Display(Order = 3)]
+        public bool CBTAlts { get; set; } = true;
+
+        [Category("Costumes")]
+        [DisplayName("Misc Costumes")]
+        [Description("Adds random misc costumes.")]
+        [DefaultValue(false)]
+        [Display(Order = 4)]
+        public bool MiscCostumesSumi { get; set; } = false;
+
         [Category("Gameplay")]
         [DisplayName("Equipment Patch - Variants")]
         [Description("Variants of Equipment Patch. Check README in mod directory.")]
         [DefaultValue(EquipmentPatch.Disabled)]
-        [Display(Order = 1)]
+        [Display(Order = 5)]
         public EquipmentPatch EquipmentPatchAddon { get; set; }
 
         [Category("UI")]
         [DisplayName("Alternate Loading Silhouette")]
         [Description("Adds an alternate loading screen icon based on Sumi's gymnast performance.")]
         [DefaultValue(LoadingWipeAltEnum.Disabled)]
-        [Display(Order = 2)]
+        [Display(Order = 6)]
         public LoadingWipeAltEnum LoadingWipeAlt { get; set; }
 
         [Category("UI")]
         [DisplayName("2016 Beta Icons")]
         [Description("Replaces the icons from the main mod with Morty's 2016 beta icons.")]
         [DefaultValue(false)]
-        [Display(Order = 3)]
+        [Display(Order = 7)]
         public bool MortyBeta { get; set; } = false;
 
         [Category("UI")]
         [DisplayName("Colorful AoA Portrait")]
         [Description("Adds a colorful AoA Portrait, recreation is based off of Haalyle's mod.")]
         [DefaultValue(false)]
-        [Display(Order = 4)]
+        [Display(Order = 8)]
         public bool AoAColor { get; set; } = false;
-
-
-        /*
-                [Category("Costumes")]
-                [DisplayName("Custom Bonus Tweaks Alts")]
-                [Description("Adds Sumi's hair down alt outfits from Custom Bonus Tweaks.")]
-                [DefaultValue(true)]
-                [Display(Order = 1)]
-                public bool CBTAlts { get; set; } = true;
-
-                [Category("Costumes")]
-                [DisplayName("Misc Costumes")]
-                [Description("Adds random misc costumes.")]
-                [DefaultValue(false)]
-                [Display(Order = 2)]
-                public bool MiscCostumesSumi { get; set; } = false;
-         */
     }
 
     /// <summary>
