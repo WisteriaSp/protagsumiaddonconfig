@@ -32,8 +32,13 @@ namespace ProtagSumiAddonConfig.Configuration
 
         public enum EquipmentPatch
         {
+            [Display(Name = "Disabled")]
             Disabled,
+
+            [Display(Name = "Gun Overhaul")]
             GunOverhaul,
+
+            [Display(Name = "Extra Rounds")]
             ExtraRounds,
         }
 
@@ -46,17 +51,34 @@ namespace ProtagSumiAddonConfig.Configuration
 
         public enum WeaponsModels
         {
+            [Display(Name = "Default")]
             Default,
+
+            [Display(Name = "Expanded")]
             Expanded,
+
+            [Display(Name = "Expanded (No Lances)")]
             Expanded_No_Lances,
+        }
+
+        public enum SumireOverhaulEnum
+        {
+            [Display(Name = "Disabled")]
+            Disabled,
+
+            [Display(Name = "Models Only")]
+            Models_Only,
+
+            [Display(Name = "Models and Animations")]
+            Models_and_Animations,
         }
 
         [Category("Model")]
         [DisplayName("Sumire Overhaul")]
         [Description("Replaces all models with Sumire's glasses and hair down models (expect bugs!)")]
-        [DefaultValue(false)]
+        [DefaultValue(SumireOverhaulEnum.Disabled)]
         [Display(Order = 1)]
-        public bool SumireOverhaul { get; set; } = false;
+        public SumireOverhaulEnum SumireOverhaul { get; set; }
 
         [Category("Model")]
         [DisplayName("Expanded Weapon Models")]

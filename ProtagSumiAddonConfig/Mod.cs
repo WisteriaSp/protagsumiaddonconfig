@@ -212,16 +212,31 @@ var BGMEController = _modLoader.GetController<IBgmeApi>();
             }
 
             // Sumire Overhaul
-            if (_configuration.SumireOverhaul)
+            if (_configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_Only ||
+                _configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_and_Animations)
             {
-                var assetFolder = Path.Combine(modDir, "OptionalModFiles", "Overhaul", "SumireVersion", "Characters", "Joker", "1");
+                List<string> sumireFolders = new();
 
-                if (Directory.Exists(assetFolder))
+                if (_configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_Only)
                 {
-                    foreach (var file in Directory.EnumerateFiles(assetFolder, "*", SearchOption.AllDirectories))
+                    sumireFolders.Add("SumireVersion");
+                }
+                else if (_configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_and_Animations)
+                {
+                    sumireFolders.AddRange(new[] { "SumireVersion", "SumireAnimations" });
+                }
+
+                foreach (var folder in sumireFolders)
+                {
+                    var assetFolder = Path.Combine(modDir, "OptionalModFiles", "Overhaul", folder, "Characters", "Joker", "1");
+
+                    if (Directory.Exists(assetFolder))
                     {
-                        var relativePath = Path.GetRelativePath(assetFolder, file);
-                        criFsApi.AddBind(file, relativePath, _modConfig.ModId);
+                        foreach (var file in Directory.EnumerateFiles(assetFolder, "*", SearchOption.AllDirectories))
+                        {
+                            var relativePath = Path.GetRelativePath(assetFolder, file);
+                            criFsApi.AddBind(file, relativePath, _modConfig.ModId);
+                        }
                     }
                 }
             }
