@@ -76,9 +76,16 @@ namespace ProtagSumiAddonConfig.Configuration
         [Category("Model")]
         [DisplayName("Sumire Overhaul")]
         [Description("Replaces all models with Sumire's glasses and hair down models (expect bugs!)")]
-        [DefaultValue(SumireOverhaulEnum.Disabled)]
+        [DefaultValue(false)]
         [Display(Order = 1)]
-        public SumireOverhaulEnum SumireOverhaul { get; set; }
+        public bool SumireOverhaul { get; set; } = false;
+
+        [Category("Model")]
+        [DisplayName("Sumire Animations")]
+        [Description("Replaces some animations with Sumire's animations (expect bugs!)")]
+        [DefaultValue(false)]
+        [Display(Order = 1)]
+        public bool SumireAnimations { get; set; } = false;
 
         [Category("Model")]
         [DisplayName("Expanded Weapon Models")]
@@ -95,11 +102,11 @@ namespace ProtagSumiAddonConfig.Configuration
         public bool CBTAlts { get; set; } = true;
 
         [Category("Costumes")]
-        [DisplayName("Misc Costumes")]
-        [Description("Adds random misc costumes.")]
-        [DefaultValue(false)]
+        [DisplayName("Addon Costumes")]
+        [Description("Adds costumes created by myself and other community members.")]
+        [DefaultValue(true)]
         [Display(Order = 4)]
-        public bool MiscCostumesSumi { get; set; } = false;
+        public bool MiscCostumesSumi { get; set; } = true;
 
         [Category("Gameplay")]
         [DisplayName("Equipment Patch - Variants")]

@@ -137,6 +137,13 @@ var BGMEController = _modLoader.GetController<IBgmeApi>();
                 CostumeFrameworkAPI.AddCostumesFolder(modDir, CBTFolder);
             }
 
+            // Addon Costumes
+            if (_configuration.MiscCostumesSumi)
+            {
+                var CBTFolder = Path.Combine(modDir, "OptionalModFiles", "Costumes", "AddonCostumes", "Costumes");
+                CostumeFrameworkAPI.AddCostumesFolder(modDir, CBTFolder);
+            }
+
             // Equipment Patch Config
             if (_configuration.EquipmentPatchAddon == Config.EquipmentPatch.GunOverhaul ||
                 _configuration.EquipmentPatchAddon == Config.EquipmentPatch.ExtraRounds)
@@ -212,31 +219,30 @@ var BGMEController = _modLoader.GetController<IBgmeApi>();
             }
 
             // Sumire Overhaul
-            if (_configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_Only ||
-                _configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_and_Animations)
+            if (_configuration.SumireOverhaul)
             {
-                List<string> sumireFolders = new();
+                var assetFolder = Path.Combine(modDir, "OptionalModFiles", "Overhaul", "SumireVersion", "Characters", "Joker", "1");
 
-                if (_configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_Only)
+                if (Directory.Exists(assetFolder))
                 {
-                    sumireFolders.Add("SumireVersion");
-                }
-                else if (_configuration.SumireOverhaul == Config.SumireOverhaulEnum.Models_and_Animations)
-                {
-                    sumireFolders.AddRange(new[] { "SumireVersion", "SumireAnimations" });
-                }
-
-                foreach (var folder in sumireFolders)
-                {
-                    var assetFolder = Path.Combine(modDir, "OptionalModFiles", "Overhaul", folder, "Characters", "Joker", "1");
-
-                    if (Directory.Exists(assetFolder))
+                    foreach (var file in Directory.EnumerateFiles(assetFolder, "*", SearchOption.AllDirectories))
                     {
-                        foreach (var file in Directory.EnumerateFiles(assetFolder, "*", SearchOption.AllDirectories))
-                        {
-                            var relativePath = Path.GetRelativePath(assetFolder, file);
-                            criFsApi.AddBind(file, relativePath, _modConfig.ModId);
-                        }
+                        var relativePath = Path.GetRelativePath(assetFolder, file);
+                        criFsApi.AddBind(file, relativePath, _modConfig.ModId);
+                    }
+                }
+            }
+
+            if (_configuration.SumireAnimations)
+            {
+                var assetFolder = Path.Combine(modDir, "OptionalModFiles", "Overhaul", "SumireAnimations", "Characters", "Joker", "1");
+
+                if (Directory.Exists(assetFolder))
+                {
+                    foreach (var file in Directory.EnumerateFiles(assetFolder, "*", SearchOption.AllDirectories))
+                    {
+                        var relativePath = Path.GetRelativePath(assetFolder, file);
+                        criFsApi.AddBind(file, relativePath, _modConfig.ModId);
                     }
                 }
             }

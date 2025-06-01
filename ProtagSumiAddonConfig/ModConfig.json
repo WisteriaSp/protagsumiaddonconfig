@@ -18,6 +18,7 @@
   "PluginData": {},
   "IsUniversalMod": false,
   "ModDependencies": [
+    "BGME.Framework",
     "crifs.v2.hook",
     "P5R.CostumeFramework",
     "p5rpc.kasumiasprotag",
@@ -25,12 +26,14 @@
     "reloaded.universal.fileemulationframework.bf",
     "reloaded.universal.fileemulationframework.bmd",
     "reloaded.universal.fileemulationframework.pak",
-    "reloaded.universal.fileemulationframework.spd"
+    "reloaded.universal.fileemulationframework.spd",
+    "Ryo.Reloaded"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [
     "p5r.exe"
   ],
   "ProjectUrl": "",
-  "CreatorUrl": ""
+  "CreatorUrl": "",
+  "IsSeparator": false
 }
