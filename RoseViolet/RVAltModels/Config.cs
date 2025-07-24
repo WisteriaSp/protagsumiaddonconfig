@@ -41,6 +41,23 @@ namespace RVAltModels.Configuration
             RedGold,
         }
 
+        public enum BustupRV
+        {
+            [Display(Name = "Default")]
+            Default,
+
+            [Display(Name = "L7M3")]
+            L7M3RV,
+        }
+
+
+        [Category("Bustup")]
+        [DisplayName("Dialogue Portrait")]
+        [Description("Select your preferred dialogue bustups.")]
+        [DefaultValue(BustupRV.Default)]
+        [Display(Order = 0)]
+        public BustupRV BustupValue { get; set; }
+
         [Category("Model")]
         [DisplayName("Black Leotard Overhaul")]
         [Description("Replaces the Black Leotard phantom suit with a recoloured Leotard.")]

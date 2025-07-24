@@ -47,7 +47,15 @@ namespace RVMainMod
             // Weapons
             if (_configuration.WeaponsPatch)
                 criFsApi.AddProbingPath(Path.Combine(modDir, "OptionalModFiles", "WeaponsAndEquipment"));
-            pakEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "WeaponsAndEquipment", "PAK"));
+                pakEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "WeaponsAndEquipment", "PAK"));
+        }
+
+        private static void BindAllFilesIn(string subPathRelativeToModDir, string modDir, ICriFsRedirectorApi criFsApi, string modId)
+        {
+            var absoluteFolder = Path.Combine(modDir, subPathRelativeToModDir);
+            if (!Directory.Exists(absoluteFolder)) return;
+            foreach (var file in Directory.EnumerateFiles(absoluteFolder, "*", SearchOption.AllDirectories))
+                criFsApi.AddBind(file, Path.GetRelativePath(absoluteFolder, file).Replace(Path.DirectorySeparatorChar, '/'), modId);
         }
 
         public override void ConfigurationUpdated(Config configuration)

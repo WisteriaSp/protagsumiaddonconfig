@@ -51,6 +51,10 @@ namespace RVAltModels
             // Blue Dress
             if (_configuration.BlueDressRV)
                 BindAllFilesIn(Path.Combine("OptionalModFiles", "BlueDress"), modDir, criFsApi, modId);
+
+            // Bustup
+            if (_configuration.BustupValue == Config.BustupRV.L7M3RV)
+                BindAllFilesIn(Path.Combine("OptionalModFiles", "Bustup", "L7M3"), modDir, criFsApi, modId);
         }
 
         private static void BindAllFilesIn(string subPathRelativeToModDir, string modDir, ICriFsRedirectorApi criFsApi, string modId)
