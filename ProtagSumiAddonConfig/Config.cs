@@ -8,8 +8,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProtagSumiAddonConfig.Configuration
 {
-	public class Config : Configurable<Config>
-	{
+    public class Config : Configurable<Config>
+    {
         /*
             User Properties:
                 - Please put all of your configurable properties here.
@@ -84,64 +84,71 @@ namespace ProtagSumiAddonConfig.Configuration
         [DisplayName("Sumire Animations")]
         [Description("Replaces some animations with Sumire's animations (expect bugs!)")]
         [DefaultValue(false)]
-        [Display(Order = 1)]
+        [Display(Order = 2)]
         public bool SumireAnimations { get; set; } = false;
 
         [Category("Model")]
         [DisplayName("Expanded Weapon Models")]
         [Description("Choose between the default weapon models or an expanded selection of weapon models by JustAdam.")]
         [DefaultValue(WeaponsModels.Default)]
-        [Display(Order = 2)]
+        [Display(Order = 3)]
         public WeaponsModels WeaponModelsConfigEnum { get; set; }
 
         [Category("Costumes")]
         [DisplayName("Custom Bonus Tweaks Alts")]
         [Description("Adds Sumi's hair down alt outfits from Custom Bonus Tweaks.")]
         [DefaultValue(true)]
-        [Display(Order = 3)]
+        [Display(Order = 4)]
         public bool CBTAlts { get; set; } = true;
 
         [Category("Costumes")]
         [DisplayName("Addon Costumes")]
         [Description("Adds costumes created by myself and other community members.")]
         [DefaultValue(true)]
-        [Display(Order = 4)]
+        [Display(Order = 5)]
         public bool MiscCostumesSumi { get; set; } = true;
 
         [Category("Gameplay")]
         [DisplayName("Equipment Patch - Variants")]
         [Description("Variants of Equipment Patch. Check README in mod directory.")]
         [DefaultValue(EquipmentPatch.Disabled)]
-        [Display(Order = 5)]
+        [Display(Order = 6)]
         public EquipmentPatch EquipmentPatchAddon { get; set; }
 
         [Category("UI")]
         [DisplayName("Alternate Loading Silhouette")]
         [Description("Adds an alternate loading screen icon based on Sumi's gymnast performance.")]
         [DefaultValue(LoadingWipeAltEnum.Disabled)]
-        [Display(Order = 6)]
+        [Display(Order = 7)]
         public LoadingWipeAltEnum LoadingWipeAlt { get; set; }
 
         [Category("UI")]
         [DisplayName("2016 Beta Icons")]
         [Description("Replaces the icons from the main mod with Morty's 2016 beta icons.")]
         [DefaultValue(false)]
-        [Display(Order = 7)]
+        [Display(Order = 8)]
         public bool MortyBeta { get; set; } = false;
 
         [Category("UI")]
         [DisplayName("Colorful AoA Portrait")]
         [Description("Adds a colorful AoA Portrait, recreation is based off of Haalyle's mod.")]
         [DefaultValue(false)]
-        [Display(Order = 8)]
+        [Display(Order = 9)]
         public bool AoAColor { get; set; } = false;
-        
+
         [Category("UI")]
         [DisplayName("E.P.I.C Party Panel")]
         [Description("Adds support for E.P.I.C party panel by Century.")]
         [DefaultValue(false)]
-        [Display(Order = 9)]
+        [Display(Order = 10)]
         public bool EPICPP { get; set; } = false;
+
+        [Category("UI")]
+        [DisplayName("Colorful Pack Compatibility")]
+        [Description("Adds support for P5R Colorful Pack by HaythamQuake.")]
+        [DefaultValue(false)]
+        [Display(Order = 11)]
+        public bool ColorfulPack { get; set; } = false;
 
     }
 

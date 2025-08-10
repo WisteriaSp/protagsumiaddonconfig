@@ -91,6 +91,11 @@ namespace ProtagSumiAddonConfig
             if (_configuration.EPICPP)
                 spdEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "UI", "EPIC", "SPD"));
 
+            // Colorful Pack
+            if (_configuration.ColorfulPack)
+                spdEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "UI", "Colorful", "SPD"));
+                BindAllFilesIn(Path.Combine("OptionalModFiles", "UI", "Colorful", "Bind"), modDir, criFsApi, modId);
+
             // Loading Wipe (Pink or Gray)
             if (_configuration.LoadingWipeAlt == Config.LoadingWipeAltEnum.Pink || _configuration.LoadingWipeAlt == Config.LoadingWipeAltEnum.Gray)
             {
