@@ -135,6 +135,14 @@ namespace ProtagSumiAddonConfig.Configuration
         [DefaultValue(false)]
         [Display(Order = 8)]
         public bool AoAColor { get; set; } = false;
+        
+        [Category("UI")]
+        [DisplayName("E.P.I.C Party Panel")]
+        [Description("Adds support for E.P.I.C party panel by Century.")]
+        [DefaultValue(false)]
+        [Display(Order = 9)]
+        public bool EPICPP { get; set; } = false;
+
     }
 
     /// <summary>

@@ -14,6 +14,16 @@
          If you set this to true, trimming will be enabled when you publish the mod.
          Test trimming with: `BuildLinked.ps1` in PowerShell. -->
     <ReloadedILLink>false</ReloadedILLink>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,7 +45,7 @@
 
   <ItemGroup>
     <Content Include="ModConfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Update="Preview.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

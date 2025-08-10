@@ -87,6 +87,10 @@ namespace ProtagSumiAddonConfig
             if (_configuration.SumireAnimations)
                 BindAllFilesIn(Path.Combine("OptionalModFiles", "Overhaul", "SumireAnimations"), modDir, criFsApi, modId);
 
+            // EPIC
+            if (_configuration.EPICPP)
+                spdEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "UI", "EPIC", "SPD"));
+
             // Loading Wipe (Pink or Gray)
             if (_configuration.LoadingWipeAlt == Config.LoadingWipeAltEnum.Pink || _configuration.LoadingWipeAlt == Config.LoadingWipeAltEnum.Gray)
             {
