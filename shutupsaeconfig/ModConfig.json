@@ -1,0 +1,33 @@
+{
+  "ModId": "p5rpc.shutupsae",
+  "ModName": "Shut Up Sae",
+  "ModAuthor": "Wisteria",
+  "ModVersion": "2.0.0",
+  "ModDescription": "Sae no longer interrupts rank 1 confidant scenes.",
+  "ModDll": "shutupsaeconfig.dll",
+  "ModIcon": "shut.png",
+  "ModR2RManagedDll32": "",
+  "ModR2RManagedDll64": "",
+  "ModNativeDll32": "",
+  "ModNativeDll64": "",
+  "Tags": [],
+  "CanUnload": null,
+  "HasExports": null,
+  "IsLibrary": false,
+  "ReleaseMetadataFileName": "p5rpc.shutupsae.ReleaseMetadata.json",
+  "PluginData": {
+    "GameBanana": {
+      "ItemType": "Mod",
+      "ItemId": 441228
+    }
+  },
+  "IsUniversalMod": false,
+  "ModDependencies": [
+    "p5rpc.modloader"
+  ],
+  "OptionalDependencies": [],
+  "SupportedAppId": [
+    "p5r.exe"
+  ],
+  "ProjectUrl": ""
+}

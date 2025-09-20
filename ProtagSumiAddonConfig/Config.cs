@@ -73,6 +73,18 @@ namespace ProtagSumiAddonConfig.Configuration
             Models_and_Animations,
         }
 
+        public enum ColorfulEnum
+        {
+            [Display(Name = "Disabled")]
+            Disabled,
+
+            [Display(Name = "Enabled (No Party Panel)")]
+            Enabled_No_Party_Panel,
+
+            [Display(Name = "Enabled (With Party Panel)")]
+            Enabled_With_Party_Panel,
+        }
+
         [Category("Model")]
         [DisplayName("Sumire Overhaul")]
         [Description("Replaces all models with Sumire's glasses and hair down models (expect bugs!)")]
@@ -108,6 +120,13 @@ namespace ProtagSumiAddonConfig.Configuration
         [Display(Order = 5)]
         public bool MiscCostumesSumi { get; set; } = true;
 
+        [Category("Costumes")]
+        [DisplayName("Costume Music")]
+        [Description("Enables costume music for all addon collection costumes that support it.")]
+        [DefaultValue(true)]
+        [Display(Order = 6)]
+        public bool AddonCostumeMusic { get; set; } = true;
+
         [Category("Gameplay")]
         [DisplayName("Equipment Patch - Variants")]
         [Description("Variants of Equipment Patch. Check README in mod directory.")]
@@ -131,7 +150,7 @@ namespace ProtagSumiAddonConfig.Configuration
 
         [Category("UI")]
         [DisplayName("Colorful AoA Portrait")]
-        [Description("Adds a colorful AoA Portrait, recreation is based off of Haalyle's mod.")]
+        [Description("Adds a colorful AoA Portrait, recreation is based on Haalyle's mod.")]
         [DefaultValue(false)]
         [Display(Order = 9)]
         public bool AoAColor { get; set; } = false;
@@ -146,10 +165,16 @@ namespace ProtagSumiAddonConfig.Configuration
         [Category("UI")]
         [DisplayName("Colorful Pack Compatibility")]
         [Description("Adds support for P5R Colorful Pack by HaythamQuake.")]
-        [DefaultValue(false)]
+        [DefaultValue(ColorfulEnum.Disabled)]
         [Display(Order = 11)]
-        public bool ColorfulPack { get; set; } = false;
-
+        public ColorfulEnum ColorfulPack { get; set; }
+        
+        [Category("UI")]
+        [DisplayName("Colorful Pack Icons")]
+        [Description("Adds support for Colorful Pack weapon icons by HathamQuake. Disable if using Beta icons.")]
+        [DefaultValue(false)]
+        [Display(Order = 12)]
+        public bool ColorfulIcons { get; set; } = false;
     }
 
     /// <summary>

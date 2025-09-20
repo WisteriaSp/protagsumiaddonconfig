@@ -56,6 +56,10 @@ namespace ProtagSumiAddonConfig
             if (_configuration.MiscCostumesSumi)
                 costumeApi.AddCostumesFolder(modDir, Path.Combine(modDir, "OptionalModFiles", "CostumesAddon"));
 
+            // Addon Costumes
+            if (_configuration.AddonCostumeMusic)
+                costumeApi.AddCostumesFolder(modDir, Path.Combine(modDir, "OptionalModFiles", "CostumeMusic"));
+
             // Equipment Patch Config
             if (_configuration.EquipmentPatchAddon == Config.EquipmentPatch.GunOverhaul || _configuration.EquipmentPatchAddon == Config.EquipmentPatch.ExtraRounds)
             {
@@ -92,9 +96,18 @@ namespace ProtagSumiAddonConfig
                 spdEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "UI", "EPIC", "SPD"));
 
             // Colorful Pack
-            if (_configuration.ColorfulPack)
-                spdEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "UI", "Colorful", "SPD"));
+            if (_configuration.ColorfulPack == Config.ColorfulEnum.Enabled_No_Party_Panel ||
+                _configuration.ColorfulPack == Config.ColorfulEnum.Enabled_With_Party_Panel)
+            {
                 BindAllFilesIn(Path.Combine("OptionalModFiles", "UI", "Colorful", "Bind"), modDir, criFsApi, modId);
+                if (_configuration.ColorfulPack == Config.ColorfulEnum.Enabled_With_Party_Panel)
+                    spdEmu.AddDirectory(Path.Combine(modDir, "OptionalModFiles", "UI", "Colorful", "SPD"));
+            }
+
+            if (_configuration.ColorfulIcons)
+            {
+                BindAllFilesIn(Path.Combine("OptionalModFiles", "UI", "ColorfulIcons", "Bind"), modDir, criFsApi, modId);
+            }
 
             // Loading Wipe (Pink or Gray)
             if (_configuration.LoadingWipeAlt == Config.LoadingWipeAltEnum.Pink || _configuration.LoadingWipeAlt == Config.LoadingWipeAltEnum.Gray)
