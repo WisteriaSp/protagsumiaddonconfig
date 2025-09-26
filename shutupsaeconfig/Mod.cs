@@ -4,6 +4,7 @@ using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using CriFs.V2.Hook.Interfaces;
 using CriExtensions;
+using System.IO;
 
 namespace shutupsae
 {
@@ -41,7 +42,7 @@ namespace shutupsae
             if (isRoseViolet)
             {
                 _logger.WriteLine("Shut Up Sae: Rose & Violet detected, enabling compatibility", System.Drawing.Color.Purple);
-                BindAllFilesIn(Path.Combine("RoseViolet"), modDir, criFsApi, modId);
+                criFsApi.AddProbingPath(Path.Combine(modDir, "RoseViolet"));
             }
 
             // Legacy
